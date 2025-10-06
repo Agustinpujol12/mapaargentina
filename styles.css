@@ -1,0 +1,186 @@
+
+/* General Styles */
+body {
+    background: linear-gradient(to right, #8e9eab, #eef2f3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 15px;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+}
+
+path.active {
+  fill: yellow;
+}
+
+/* Info Container */
+#info-container {
+    background-color: #f0f4f8; /* New background color */
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overflow: auto;
+}
+
+#info-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Differentiated Headings for Province Info */
+#info-container h2 {
+    font-size: 1.2rem; /* Subtitle style */
+    font-weight: 300;
+    color: #555;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+#info-container h3 {
+    font-size: 2.5rem; /* Main title style */
+    font-weight: 700;
+    color: #2c3e50;
+    margin-top: 5px;
+}
+
+
+/* General Headings (for other sections) */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Tourism Section */
+.tourism-section {
+    background-color: #f0f4f8; /* New background color */
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+}
+
+.tourism-entries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.tourism-entry {
+    flex: 0 0 calc(48% - 20px);
+    margin-bottom: 30px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tourism-entry img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tourism-entry img:hover {
+    transform: scale(1.03);
+}
+
+.tourism-description h4 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px; /* Added margin-top */
+}
+
+
+/* Provinces Table */
+#provincesTableContainer {
+    max-height: 450px; /* Adjusted height with scroll */
+    overflow-y: auto;
+    border-radius: 15px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin-top: 30px;
+    background-color: #f0f4f8; /* New background color */
+}
+
+#provincesTableContainer h2 {
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+#provincesTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#provincesTable thead th {
+    background: linear-gradient(45deg, #007bff, #00d2ff); /* Colorful header */
+    color: #fff;
+    font-weight: 600;
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    position: sticky;
+    top: 0;
+}
+
+#provincesTable tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #d4dde5;
+    color: #333;
+    font-size: 15px;
+}
+
+#provincesTable tbody tr {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+#provincesTable tbody tr:nth-of-type(even) {
+    background-color: #e9f5ff; /* Alternating row color */
+}
+
+#provincesTable tbody tr:hover {
+    background-color: #d1e9ff; /* Hover effect */
+    cursor: pointer;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .tourism-entry {
+        flex: 0 0 calc(100% - 20px);
+    }
+    #info-container h3 {
+        font-size: 2rem;
+    }
+}
