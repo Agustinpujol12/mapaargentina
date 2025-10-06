@@ -50,7 +50,7 @@ path.active {
 
 /* Differentiated Headings for Province Info */
 #info-container h2 {
-    font-size: 1.5rem; /* Subtitle style */
+    font-size: 2rem; /* Subtitle style */
     font-weight: 900;
     color: #2c3e50;
     margin-bottom: 10px;
@@ -59,12 +59,17 @@ path.active {
 }
 
 #info-container h3 {
-    font-size: 4rem; /* Main title style */
+    font-size: 5rem; /* Main title style */
     font-weight: 900;
     color: #2c3e50;
     margin-top: 5px;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+#info-container p {
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 
@@ -132,8 +137,12 @@ h3 {
 
 .tourism-description h4 {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 28px;
     margin-top: 0;
+}
+
+.tourism-description p {
+    font-size: 1.2rem;
 }
 
 
