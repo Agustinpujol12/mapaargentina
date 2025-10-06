@@ -54,3 +54,28 @@ Está pensado como una herramienta **didáctica y visual** para conocer las prov
 ## 🚀 Ejecución local
 
 https://mapa-beige.vercel.app/
+
+---
+
+## 🖼️ Vista previa
+
+<p align="center">
+  <img src="img/preview.png" alt="Vista general del sitio" width="600" style="margin:10px"/>
+</p>
+
+---
+
+## 📄 Licencia
+
+Este proyecto fue desarrollado por **Agustín Pujol** como parte de su aprendizaje en desarrollo web.  
+Su uso está permitido con fines **educativos o de portafolio personal**.  
+© 2025 Agustín Pujol. Todos los derechos reservados.
+
+---
+
+## 👨‍💻 Autor
+
+**Agustín Pujol**  
+Desarrollador de software | Android · Web · UX/UI  
+· [LinkedIn](https://www.linkedin.com/in/agustinpujol/)  
+· [GitHub](https://github.com/Agustinpujol12)
