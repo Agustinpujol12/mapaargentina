@@ -48,24 +48,27 @@ path.active {
     margin-bottom: 20px;
 }
 
-/* Differentiated Headings for Province Info */
+/* Títulos dentro del panel de info */
 #info-container h2 {
-    font-size: 2rem; /* Subtitle style */
-    font-weight: 900;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  font-size: 1.2rem;     /* antes 2rem */
+  font-weight: 900;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 #info-container h3 {
-    font-size: 5rem; /* Main title style */
-    font-weight: 900;
-    color: #2c3e50;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  font-size: 2.2rem;   /* antes 5rem */
+  font-weight: 900;
+  color: #2c3e50;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
 }
+
 
 #info-container p {
     font-size: 1.2rem;
@@ -146,17 +149,16 @@ h3 {
 }
 
 
-/* Provinces Table */
+/* Ocultar la scrollbar interna del contenedor (sigue funcionando el scroll) */
 #provincesTableContainer {
-    max-height: 450px;
-    overflow-y: auto;
-    border-radius: 15px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    margin-top: 30px;
-    background-color: #f0f4f8;
-    overflow-x: hidden;
-    margin-top: 30px; /* Added top margin */
+  scrollbar-width: none;           /* Firefox */
 }
+#provincesTableContainer::-webkit-scrollbar { /* Chrome/Edge/Safari */
+  width: 0;
+  height: 0;
+}
+
+
 
 #provincesTableContainer h1 {
     text-align: center;
@@ -167,21 +169,22 @@ h3 {
     color: #333;
 }
 
+/* Evita glitches con sticky */
 #provincesTable {
-    width: 100%;
-    border-collapse: collapse;
+  border-collapse: separate;  /* en vez de collapse */
+  border-spacing: 0;
 }
 
+/* Header pegado, por encima de las filas */
 #provincesTable thead th {
-    background-color: #007bff; /* Solid blue background */
-    color: #fff;
-    font-weight: 700; /* Bolder header text */
-    padding: 15px;
-    text-align: left;
-    font-size: 16px;
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
+  z-index: 5;                 /* <-- clave */
+  background-color: #007bff;  /* fondo sólido */
+  /* opcional: pequeña sombra para separar visualmente */
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
 }
+
 
 #provincesTable thead th a {
     color: #fff;
@@ -229,3 +232,17 @@ h3 {
         margin-top: 20px; /* Added margin for spacing on mobile */
     }
 }
+
+/* 🔸 Estado activo del encabezado ordenado (mismo amarillo del hover del mapa SVG) */
+#provincesTable th a.active-sort {
+  color: #ffff00 !important; /* mismo amarillo del fill del mapa */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#provincesTable th a:hover,
+#provincesTable th a.active-sort:hover {
+  color: #ffff00 !important;
+}
+
+

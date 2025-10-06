@@ -63,14 +63,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const imageElement = `<img src="${imageUrl}" alt="${selectedProvince.name}">`;
 
-            const provinceBoxHTML = `
-              <div class="province-box">
-                <h2>${selectedProvince.name}</h2>
-                ${imageElement}
-                <p><strong>Capital:</strong> ${selectedProvince.capital}</p>
-                <p><strong>Población:</strong> ${selectedProvince.population}</p>
-                <p><strong>Área:</strong> ${selectedProvince.area}</p>
-                <p><strong>Descripción:</strong> ${selectedProvince.description}</p>
+const provinceBoxHTML = `
+  <div class="province-box">
+    <h2>Información de la provincia</h2>
+    <h3>${selectedProvince.name}</h3>
+    ${imageElement}
+    <p><strong>Capital:</strong> ${selectedProvince.capital}</p>
+    <p><strong>Población:</strong> ${selectedProvince.population}</p>
+    <p><strong>Área:</strong> ${selectedProvince.area}</p>
+    <p><strong>Descripción:</strong> ${selectedProvince.description}</p>
               </div>
             `;
 
@@ -115,11 +116,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
+
 const tableBody = document.querySelector('#provincesTable tbody');
+const sortNameLink = document.querySelector('#sortName');        // NUEVO
 const sortPopulationLink = document.querySelector('#sortPopulation');
 const sortAreaLink = document.querySelector('#sortArea');
 
 let provincesData;
+let sortByNameAsc = true;            // NUEVO
 let sortByPopulationAsc = true;
 let sortByAreaAsc = true;
 
@@ -145,23 +149,58 @@ function displayProvinces(data) {
     });
 }
 
+// 🔁 Orden genérico: si es 'name' ordena alfabéticamente, sino numérico
 function sortTableByColumn(column, ascending) {
-    provincesData.sort((a, b) => {
-        const valueA = a[column].replace(/,/g, '').replace(' km²', '');
-        const valueB = b[column].replace(/,/g, '').replace(' km²', '');
-        return ascending ? valueA - valueB : valueB - valueA;
-    });
+    if (column === 'name') {
+        provincesData.sort((a, b) => {
+            // orden alfabético ES, sin distinguir mayúsculas/minúsculas ni tildes
+            const A = a.name || '';
+            const B = b.name || '';
+            return ascending
+                ? A.localeCompare(B, 'es', { sensitivity: 'base' })
+                : B.localeCompare(A, 'es', { sensitivity: 'base' });
+        });
+    } else {
+        provincesData.sort((a, b) => {
+            const clean = (v) => String(v).replace(/\./g, '').replace(/,/g, '').replace(/\s?km²/i, '').trim();
+            const valueA = Number(clean(a[column])) || 0;
+            const valueB = Number(clean(b[column])) || 0;
+            return ascending ? valueA - valueB : valueB - valueA;
+        });
+    }
     displayProvinces(provincesData);
 }
 
+// 🔁 Función genérica para manejar el resaltado activo
+function setActiveSort(link) {
+  // remover clase de todos
+  [sortNameLink, sortPopulationLink, sortAreaLink].forEach(l => l.classList.remove('active-sort'));
+  // activar solo el actual
+  link.classList.add('active-sort');
+}
+
+// ▶️ Click en “Nombre”
+if (sortNameLink) {
+  sortNameLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    sortByNameAsc = !sortByNameAsc;
+    sortTableByColumn('name', sortByNameAsc);
+    setActiveSort(sortNameLink);
+  });
+}
+
+// ▶️ Click en “Población”
 sortPopulationLink.addEventListener('click', function (e) {
-    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
-    sortByPopulationAsc = !sortByPopulationAsc;
-    sortTableByColumn('population', sortByPopulationAsc);
+  e.preventDefault();
+  sortByPopulationAsc = !sortByPopulationAsc;
+  sortTableByColumn('population', sortByPopulationAsc);
+  setActiveSort(sortPopulationLink);
 });
 
+// ▶️ Click en “Área”
 sortAreaLink.addEventListener('click', function (e) {
-    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
-    sortByAreaAsc = !sortByAreaAsc;
-    sortTableByColumn('area', sortByAreaAsc);
+  e.preventDefault();
+  sortByAreaAsc = !sortByAreaAsc;
+  sortTableByColumn('area', sortByAreaAsc);
+  setActiveSort(sortAreaLink);
 });
