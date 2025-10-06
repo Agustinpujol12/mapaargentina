@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/mapa_argentina5.png" alt="Mapa Argentina logo" width="200"/>
+  <img src="img/mapa_argentina5.png" alt="Mapa Argentina logo" width="300"/>
 </p>
 
 <h1 align="center">Mapa Interactivo de Argentina</h1>
