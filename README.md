@@ -77,5 +77,4 @@ Su uso está permitido con fines **educativos o de portafolio personal**.
 
 **Agustín Pujol**  
 Desarrollador de software | Android · Web · UX/UI  
-· [LinkedIn](https://www.linkedin.com/in/agustinpujol/)  
-· [GitHub](https://github.com/Agustinpujol12)
+· [LinkedIn](https://www.linkedin.com/in/agustinpujol/))  
